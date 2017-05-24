@@ -29,3 +29,28 @@ var a = 'Hello, I love you, could you tell me your name';
 var b = 'span';
 var html = wrap_in_tag(a, b);
 console.log (html);
+
+
+
+
+var merry = function(bride, groom){
+	return 'Congratulations, ' + groom + ' and ' + bride + ', you are married!';
+};
+
+var he = "John";
+var she = "Mary";
+var happy_message = merry(she, he);
+console.log(happy_message);
+
+
+
+//Напишіть функцію round_area(), яка рахує площу кола 
+//по переданому їй діаметру(вважаючи, що число Пі дорівнює 3.14).
+
+var round_area = function(diameter){
+	var radius = diameter/2;
+	var area = 3.14*radius*radius;
+	return area;
+}
+
+console.log (round_area(10));
