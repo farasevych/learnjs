@@ -97,7 +97,6 @@ console.log(test_wrap_in_div);
 // get_link('blog.php') -> 'http://example.com/blog.php'
 // доменна адреса має братись із змінної site_domain
 
-
 var site_domain = 'example.com';
 var get_link = function(str){
     var link = 'https://' + site_domain + '/' + str;
@@ -106,3 +105,16 @@ var get_link = function(str){
 
 var test_link = get_link('blog.php');
 console.log(test_link);
+
+
+
+//поверне із двох чисел те, котре найбільше
+
+var get_max = function(a, b) {
+	if (a > b) {
+		return a;
+	} else {
+		return b;
+	}
+}
+console.log(get_max(5, 991));
