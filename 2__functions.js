@@ -118,3 +118,169 @@ var get_max = function(a, b) {
 	}
 }
 console.log(get_max(5, 991));
+
+
+
+//функцію, яка пише вітання для юзера в залежності від його статі.
+
+var get_sexist_greeting = function(name, gender){
+	if (gender == 'male'){
+		var greet = 'Hello, Mr. ' + name + '!';
+		return greet;
+	} else {
+		var greet = 'Hello, Ms. ' + name + '!';
+		return greet;
+	}
+}
+
+console.log(get_sexist_greeting('Dzenya', 'male'));
+console.log(get_sexist_greeting('Djopa', 'female'));
+
+//refactoring
+
+var get_sexist_greeting_refactoring = function(name, gender){
+	if (gender == 'male'){
+		var address = 'Mr.';
+	} else {
+		var address = 'Ms.';
+	}
+
+	var greet = 'Hello, ' + address + ' ' + name + '!';
+	return greet;
+}
+
+console.log(get_sexist_greeting_refactoring('Zjora', 'male'));
+
+
+
+// Напишіть функцію get_over_10(), яка приймає число, і повертає його, 
+// якщо воно більше 10, а якщо воно менше, то повертає 10.
+
+var get_over_10 = function(num){
+	var res = num;
+	if (num < 10){
+		res = 10;
+	}
+	return res;
+}
+
+
+
+// Напишіть функцію get_first_positive(), яка повертає перший із трьох аргументів, 
+// який буде більше за 0
+// Якщо жодне із значень не буде додатнім, поверніть 0
+
+var get_first_positive = function(a, b, c){
+	var res = 0;
+	if (c > 0) {
+		res = c;
+	} if (b > 0) {
+		res = b;
+	} if (a > 0) {
+		res = a;
+	}
+	return res;
+}
+console.log(get_first_positive(-3, 21.2, 2.2));
+
+
+
+//хлопчик хоче придбати цигарок. Ми будемо перевіряти за 
+//допомогою спеціальної функції, чи можна йому продати
+
+var we_can_sell_cigars = function(age){
+	var permit = age >= 18;
+	return permit;
+}
+
+var boy_age = 18;
+
+if (we_can_sell_cigars(boy_age)){
+	console.log('Fuck, yeah!');
+} else {
+	console.log('No (:');
+}
+
+
+
+//ми будемо перевіряти, чи не вагітна його дівчина, 
+//а з іншого, чи кохає він її. Результат(його поточний стан) буде таким:
+
+var check_state = function(pregnant, in_love){
+	if (pregnant){
+		if (in_love){
+			var state = 'Happy';
+		} else {
+			var state = 'In trouble';
+		}
+	} else {
+		if (in_love){
+			var state = 'Happy';
+		} else {
+			var state = 'Ok.';
+		}
+	}
+	return state;
+}
+
+//refactoring
+
+var check_state2 = function(pregnant, in_love){
+	if (pregnant && in_love){
+		var state = 'happy';
+	}
+	if (pregnant && !in_love){
+		var state = 'in_trouble';
+	}
+	if (!pregnant && in_love){
+		var state = 'happy to';
+	}
+	if (!pregnant && !in_love){
+		var state = 'Ok';
+	}
+	return state;
+}
+
+//refactoring2
+
+var check_state3 = function(pregnant, in_love){
+	if (pregnant && in_love) || (!pregnant && in_love){
+		var state = 'Happy';
+	}
+	if (pregnant && !in_love){
+		var state = 'in_trouble';
+	}
+	if (!pregnant && !in_love){
+		var state = 'Ok';
+	}
+	return state;
+}
+
+//refactoring3
+
+var check_state4 = function(pregnant, in_love){
+	if (in_love){
+		var state = 'happy';
+	} else {
+		if (pregnant){
+			var state = 'in_trouble';
+		} else {
+			var state = 'Ok';
+		}
+	}	
+	return state; 
+}
+
+//refactoring4
+
+var check_state5 = function(pregnant, in_love){
+	var state = 'Happy';
+	if (!in_love){
+		if (pregnant){
+			state = 'in_trouble';
+		} else {
+			state = 'Ok';
+		}
+	}
+	return state;
+}
