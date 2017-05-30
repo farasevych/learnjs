@@ -244,7 +244,7 @@ var check_state2 = function(pregnant, in_love){
 //refactoring2
 
 var check_state3 = function(pregnant, in_love){
-	if (pregnant && in_love) || (!pregnant && in_love){
+	if ((pregnant && in_love) || (!pregnant && in_love)){
 		var state = 'Happy';
 	}
 	if (pregnant && !in_love){
@@ -283,4 +283,134 @@ var check_state5 = function(pregnant, in_love){
 		}
 	}
 	return state;
+}
+
+
+
+//Давайте подивимось, як виглядають ці операції з об"єктами:
+
+var car = {};
+car.power = 1000;
+car.color = 'Red';
+car.brand = 'Lamborjini';
+car.girl = 'Yani';
+car.name = 'DeVill';
+
+console.log(car);
+
+car.year = 2021;
+console.log(car);
+
+
+
+// Напишіть функцію create_user, яка приймає ім"я юзера і його прізвище, 
+// і повертає об"єкт із полями name і surname
+
+var create_user = function(first_name, last_name){
+
+    var full_name = {};
+
+    full_name.name = first_name;
+    full_name.surname = last_name;
+    
+    return full_name;
+}
+
+
+
+// Напишіть функцію setAge, яка буде приймати об"єкт, що позначає юзера, і число, 
+// записуватиме цьому юзеру в поле age це число, і повертатиме об"єкт.
+
+var globalVariable;
+
+var setAge = function(passedUser, age){
+	console.log(globalVariable);
+	console.log(passedUser);
+	globalVariable = passedUser;
+	globalVariable.age = age;
+	console.log(globalVariable);
+	return globalVariable;
+}
+
+
+
+//refactoring
+
+var create_user2 = function(n, s){
+	var orangutang = {
+		name: n,
+		surname: s
+	}
+	setAge(orangutang, 69);
+	return orangutang;
+}
+console.log('creating user:');
+console.log(create_user2('Tom', 'Waits2'));
+
+
+
+
+/* 
+Напишіть функцію celebrateBirthday, яка приймає об"єкт, і дивиться, 
+чи є у нього поле age. Якщо таке поле є, вона збільшує його значення на одиницю.
+Якщо такого поля нема, то нічого не робить. 
+В будь-якому разі, функція повертає об"єкт, який прийняла. 
+*/
+
+var celebrateBirthday = function(user){
+	if (user.age){
+		var age = 'age';
+		user[age]++;
+	}
+}
+
+
+
+/* 
+Напишіть функцію getKey, 
+яка приймає об"єкт і ім"я ключа, 
+і повертає його значення
+*/
+
+var getKey = function(user, key){
+    return user[key];
+}
+
+
+
+/*
+Створіть метод setUsername(name), який встановлює об'єкту user значення поля name
+*/
+
+var user = {};
+
+user.setUsername = function(name){
+  this.name = name;
+}
+
+
+/*
+Додайте йому також метод setPassword(pw, repeat_pw), 
+який приймає два аргументи(введені юзером пароль і підтвердження пароля).
+Якщо вони співпадають, встановлюємо поле password, якщо ні - повертаємо false.
+*/
+
+user.setPassword = function(pw1, pw2){
+  if(pw1 !== pw2) return false;
+  this.password = pw1;
+}
+
+
+/*
+Додайте метод login(name, pw), який буде перевіряти, чи збігаються передані ім"я
+ і пароль із уже встановленим паролем і іменем юзера.
+Якщо збігаються, то встановити поле status юзера в "logged_in", якщо ні - то в "logged_out"
+*/
+
+user.login = function(name, pw){
+  if(name === this.name && pw === this.password){
+    this.status = 'logged_in';
+      } else {
+        this.status = 'logged_out';
+        }
 }
